@@ -7,7 +7,7 @@ namespace Data
 {
     public class VisitsDat
     {
-          {
+          
         Persistencia objPer = new Persistencia();
 
         // Mostrar todas las visitas
