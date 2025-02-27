@@ -6,7 +6,7 @@ namespace Data
 {
     public class SurveyDat
     {
-        persistencia objPer = new persistencia();
+        Persistencia objPer = new Persistencia();
 
         //  Obtiene todas las encuestas registradas en la base de datos.
 
