@@ -7,7 +7,7 @@ namespace Data
 {
     public class PurchaseRequestDat
     {
-        persistencia objPer = new persistencia();
+        Persistencia objPer = new Persistencia();
 
         // Mostrar todas las solicitudes de compra
         public DataSet showPurchaseRequest()
