@@ -13,8 +13,8 @@ namespace Logic
 
         // Mostrar todos los registros de Material Educativo
         public DataSet showMaterialEdu()
-        { 
-            return objMatEdu.showMaterialEdu();
+        {
+            return objMatEdu.showMaterialEdu(); 
         }
 
         // Insertar un nuevo material educativo
