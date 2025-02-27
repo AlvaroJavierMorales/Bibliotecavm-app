@@ -6,7 +6,7 @@ namespace Data
 {
     public class AnswerDat
     {
-        persistencia objPer = new persistencia();
+        Persistencia objPer = new Persistencia();
 
         // Método para mostrar todas las respuestas
         public DataSet showAnswers()
@@ -175,3 +175,4 @@ public DataSet showAnswersByUser(int userId)
         }
 
     }
+}
