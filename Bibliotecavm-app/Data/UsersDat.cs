@@ -6,7 +6,7 @@ namespace Data
 {
     public class UserDat
     {
-        persistencia objPer = new persistencia();
+        Persistencia objPer = new Persistencia();
 
         // Mostrar todos los Usuarios
         public DataSet showUsers()
@@ -226,3 +226,4 @@ namespace Data
         }
 
     }
+}
