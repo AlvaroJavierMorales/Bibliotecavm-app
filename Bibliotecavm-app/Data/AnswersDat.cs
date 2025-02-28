@@ -145,7 +145,7 @@ namespace Data
             return objData;
         }
 
-        Recupera las respuestas dadas por un usuario.
+      //  Recupera las respuestas dadas por un usuario.
 
 public DataSet showAnswersByUser(int userId)
         {

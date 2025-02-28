@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -10,7 +12,7 @@ namespace Data
           
         Persistencia objPer = new Persistencia();
 
-        // Mostrar todas las visitas
+        //  Obtiene todas las visitas registradas en la base de datos.
         public DataSet showVisits()
         {
             DataSet objData = new DataSet();
@@ -122,26 +124,7 @@ namespace Data
 
             return executed;
         }
-
-        //  Obtiene todas las visitas registradas en la base de datos.
-
-        public DataSet showVisits()
-        {
-            DataSet objData = new DataSet();
-            MySqlDataAdapter objAdapter = new MySqlDataAdapter();
-            MySqlCommand objSelectCmd = new MySqlCommand();
-
-            objSelectCmd.Connection = objPer.openConnection();
-            objSelectCmd.CommandText = "procSelectVisits"; // Procedimiento almacenado
-            objSelectCmd.CommandType = CommandType.StoredProcedure;
-
-            objAdapter.SelectCommand = objSelectCmd;
-            objAdapter.Fill(objData);
-            objPer.closeConnection();
-
-            return objData;
-        }
-
+    
         // Devuelve el número total de visitas registradas.
 
         public int countTotalVisits()
