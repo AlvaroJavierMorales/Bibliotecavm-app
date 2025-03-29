@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5FF9C91D-EC46-41B9-A3BE-57A90C77F1AA}</ProjectGuid>
+    <ProjectGuid>{1845E2BA-EB8B-48D1-84FD-F67410ED0DBD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -15,7 +15,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44307</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -42,7 +42,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleCrypto, Version=26.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -61,18 +71,155 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\BouncyCastle.Cryptography.dll" />
+    <Content Include="bin\BouncyCastle.Cryptography.xml" />
+    <Content Include="bin\Data.dll" />
+    <Content Include="bin\Data.pdb" />
+    <Content Include="bin\Google.Protobuf.dll" />
+    <Content Include="bin\Google.Protobuf.pdb" />
+    <Content Include="bin\Google.Protobuf.xml" />
+    <Content Include="bin\K4os.Compression.LZ4.dll" />
+    <Content Include="bin\K4os.Compression.LZ4.Streams.dll" />
+    <Content Include="bin\K4os.Compression.LZ4.Streams.xml" />
+    <Content Include="bin\K4os.Compression.LZ4.xml" />
+    <Content Include="bin\K4os.Hash.xxHash.dll" />
+    <Content Include="bin\K4os.Hash.xxHash.xml" />
+    <Content Include="bin\Logic.dll" />
+    <Content Include="bin\Logic.pdb" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="Index.aspx" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\MySql.Data.dll" />
+    <Content Include="bin\MySql.Data.xml" />
+    <Content Include="bin\Presentation.dll" />
+    <Content Include="bin\Presentation.pdb" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.Globalization.Calendars.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.ZipFile.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Net.Http.dll" />
+    <Content Include="bin\roslyn\System.Net.Sockets.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Buffers.dll" />
+    <Content Include="bin\System.Buffers.xml" />
+    <Content Include="bin\System.IO.Pipelines.dll" />
+    <Content Include="bin\System.IO.Pipelines.xml" />
+    <Content Include="bin\System.Memory.dll" />
+    <Content Include="bin\System.Memory.xml" />
+    <Content Include="bin\System.Numerics.Vectors.dll" />
+    <Content Include="bin\System.Numerics.Vectors.xml" />
+    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="bin\ZstdSharp.dll" />
+    <Content Include="Default.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="Home2.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="obj\Debug\Presentation.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Presentation.dll" />
+    <Content Include="obj\Debug\Presentation.pdb" />
+    <Content Include="Recursos\css\bootstrap-grid.css" />
+    <Content Include="Recursos\css\bootstrap-grid.min.css" />
+    <Content Include="Recursos\css\bootstrap-grid.rtl.css" />
+    <Content Include="Recursos\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="Recursos\css\bootstrap-reboot.css" />
+    <Content Include="Recursos\css\bootstrap-reboot.min.css" />
+    <Content Include="Recursos\css\bootstrap-reboot.rtl.css" />
+    <Content Include="Recursos\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Recursos\css\bootstrap-utilities.css" />
+    <Content Include="Recursos\css\bootstrap-utilities.min.css" />
+    <Content Include="Recursos\css\bootstrap-utilities.rtl.css" />
+    <Content Include="Recursos\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Recursos\css\bootstrap.css" />
+    <Content Include="Recursos\css\bootstrap.min.css" />
+    <Content Include="Recursos\css\bootstrap.rtl.css" />
+    <Content Include="Recursos\css\bootstrap.rtl.min.css" />
+    <Content Include="Recursos\Icons\Escudo.ico" />
+    <Content Include="Recursos\Icons\Sin-fondo.ico" />
+    <Content Include="Recursos\js\bootstrap.bundle.js" />
+    <Content Include="Recursos\js\bootstrap.bundle.min.js" />
+    <Content Include="Recursos\js\bootstrap.esm.js" />
+    <Content Include="Recursos\js\bootstrap.esm.min.js" />
+    <Content Include="Recursos\js\bootstrap.js" />
+    <Content Include="Recursos\js\bootstrap.min.js" />
     <Content Include="Web.config" />
+    <Content Include="WFAnswer.aspx" />
+    <Content Include="WFAnswerManagement.aspx" />
+    <Content Include="WFAuthors.aspx" />
+    <Content Include="WFCategory.aspx" />
+    <Content Include="WFEditorial.aspx" />
+    <Content Include="WFMatEducativo.aspx" />
+    <Content Include="WFPresentationMaterial.aspx" />
+    <Content Include="WFPurchaseRequest.aspx" />
+    <Content Include="WFPurchaseRequestManagement.aspx" />
+    <Content Include="WFStatisticReport.aspx" />
+    <Content Include="WFSurvey.aspx" />
+    <Content Include="WFUserManagement.aspx" />
+    <Content Include="WFAcercaDe.aspx" />
+    <Content Include="WFUserRegistration.aspx" />
+    <Content Include="WFVisits.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home2.aspx.cs">
+      <DependentUpon>Home2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home2.aspx.designer.cs">
+      <DependentUpon>Home2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
@@ -81,16 +228,175 @@
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
     </Compile>
+    <Compile Include="MainUsuario.Master.cs">
+      <DependentUpon>MainUsuario.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainUsuario.Master.designer.cs">
+      <DependentUpon>MainUsuario.Master</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WFAnswer.aspx.cs">
+      <DependentUpon>WFAnswer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFAnswer.aspx.designer.cs">
+      <DependentUpon>WFAnswer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFAnswerManagement.aspx.cs">
+      <DependentUpon>WFAnswerManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFAnswerManagement.aspx.designer.cs">
+      <DependentUpon>WFAnswerManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFAuthors.aspx.cs">
+      <DependentUpon>WFAuthors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFAuthors.aspx.designer.cs">
+      <DependentUpon>WFAuthors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFCategory.aspx.cs">
+      <DependentUpon>WFCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFCategory.aspx.designer.cs">
+      <DependentUpon>WFCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFEditorial.aspx.cs">
+      <DependentUpon>WFEditorial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFEditorial.aspx.designer.cs">
+      <DependentUpon>WFEditorial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFMatEducativo.aspx.cs">
+      <DependentUpon>WFMatEducativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFMatEducativo.aspx.designer.cs">
+      <DependentUpon>WFMatEducativo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFPresentationMaterial.aspx.cs">
+      <DependentUpon>WFPresentationMaterial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFPresentationMaterial.aspx.designer.cs">
+      <DependentUpon>WFPresentationMaterial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFPurchaseRequest.aspx.cs">
+      <DependentUpon>WFPurchaseRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFPurchaseRequest.aspx.designer.cs">
+      <DependentUpon>WFPurchaseRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFPurchaseRequestManagement.aspx.cs">
+      <DependentUpon>WFPurchaseRequestManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFPurchaseRequestManagement.aspx.designer.cs">
+      <DependentUpon>WFPurchaseRequestManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFStatisticReport.aspx.cs">
+      <DependentUpon>WFStatisticReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFStatisticReport.aspx.designer.cs">
+      <DependentUpon>WFStatisticReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFSurvey.aspx.cs">
+      <DependentUpon>WFSurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFSurvey.aspx.designer.cs">
+      <DependentUpon>WFSurvey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFUserManagement.aspx.cs">
+      <DependentUpon>WFUserManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFUserManagement.aspx.designer.cs">
+      <DependentUpon>WFUserManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFAcercaDe.aspx.cs">
+      <DependentUpon>WFAcercaDe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFAcercaDe.aspx.designer.cs">
+      <DependentUpon>WFAcercaDe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFUserRegistration.aspx.cs">
+      <DependentUpon>WFUserRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFUserRegistration.aspx.designer.cs">
+      <DependentUpon>WFUserRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WFVisits.aspx.cs">
+      <DependentUpon>WFVisits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WFVisits.aspx.designer.cs">
+      <DependentUpon>WFVisits.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Main.Master" />
-    <Content Include="obj\Debug\build.force" />
+    <Content Include="bin\Data.dll.config" />
+    <Content Include="bin\Logic.dll.config" />
+    <Content Include="bin\Presentation.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\Presenta.BC777DBE.Up2Date" />
     <Content Include="obj\Debug\Presentation.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\Presentation.csproj.CoreCompileInputs.cache" />
+    <Content Include="MainUsuario.Master" />
+    <None Include="packages.config" />
+    <Content Include="Recursos\css\bootstrap-grid.css.map" />
+    <Content Include="Recursos\css\bootstrap-grid.min.css.map" />
+    <Content Include="Recursos\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="Recursos\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Recursos\css\bootstrap-reboot.css.map" />
+    <Content Include="Recursos\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Recursos\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Recursos\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Recursos\css\bootstrap-utilities.css.map" />
+    <Content Include="Recursos\css\bootstrap-utilities.min.css.map" />
+    <Content Include="Recursos\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Recursos\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Recursos\css\bootstrap.css.map" />
+    <Content Include="Recursos\css\bootstrap.min.css.map" />
+    <Content Include="Recursos\css\bootstrap.rtl.css.map" />
+    <Content Include="Recursos\css\bootstrap.rtl.min.css.map" />
+    <Content Include="Recursos\js\bootstrap.bundle.js.map" />
+    <Content Include="Recursos\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Recursos\js\bootstrap.esm.js.map" />
+    <Content Include="Recursos\js\bootstrap.esm.min.js.map" />
+    <Content Include="Recursos\js\bootstrap.js.map" />
+    <Content Include="Recursos\js\bootstrap.min.js.map" />
+    <Content Include="Recursos\Images\fondo.webp" />
+    <Content Include="Recursos\Images\Logo.webp" />
+    <Content Include="Recursos\Materiales\Cartilla1.webp" />
+    <Content Include="Recursos\Materiales\Cartilla2.webp" />
+    <Content Include="Recursos\Materiales\Cartilla3.webp" />
+    <Content Include="Recursos\Materiales\Cartilla4.webp" />
+    <Content Include="Recursos\Materiales\Cartilla5.webp" />
+    <Content Include="Recursos\Materiales\Cartilla6.webp" />
+    <Content Include="Recursos\Materiales\Cartilla7.webp" />
+    <Content Include="Recursos\Materiales\Cartilla8.webp" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -100,8 +406,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj">
-      <Project>{af777786-94d7-4c4d-b125-2e41d47dcaf4}</Project>
+      <Project>{a1629baa-5293-437b-b823-36768fb70df7}</Project>
       <Name>Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{a1a49678-5cb2-4ad3-84e9-935caa066379}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -120,9 +430,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54343</DevelopmentServerPort>
+          <DevelopmentServerPort>54317</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54343/</IISUrl>
+          <IISUrl>https://localhost:44307/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -132,6 +442,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 
@@ -43,8 +44,8 @@ namespace Data
 
             return objData;
         }
-        // Registra un nuevo usuario en la base de datos. 
 
+        // Registra un nuevo usuario en la base de datos.
         public bool saveUser(string nombre, string apellido, string correo, string contrasena, string salt, string rol, string nivelEstudios)
         {
             bool executed = false;
@@ -78,10 +79,7 @@ namespace Data
             return executed;
         }
 
-
-        //  Modifica la información de un usuario existente.
-
-
+        // Modifica la información de un usuario existente.
         public bool updateUser(int idUser, string nombre, string apellido, string correo, string contrasena, string salt, string rol, string nivelEstudios)
         {
             bool executed = false;
@@ -117,7 +115,6 @@ namespace Data
         }
 
         // Comprueba si un correo ya está registrado en la base de datos.
-
         public bool checkEmailExists(string correo)
         {
             bool exists = false;
@@ -143,7 +140,6 @@ namespace Data
         }
 
         // Borra un usuario de la base de datos.
-
         public bool deleteUser(int idUser)
         {
             bool executed = false;
@@ -171,37 +167,49 @@ namespace Data
             return executed;
         }
 
-
-        // Verifica las credenciales de un usuario para iniciar sesión.
-
-        public DataSet validateUserLogin(string correo, string contrasena)
+        public User showUsersMail(string mail)
         {
-            DataSet ds = new DataSet();
-            using (MySqlConnection conn = new MySqlConnection("server=localhost;database=bibliotecavirtualmisakdb;uid=root;password=alvaro;"))
+            User objUser = null;
+            MySqlCommand objSelectCmd = new MySqlCommand();
+            objSelectCmd.Connection = objPer.openConnection();
+            objSelectCmd.CommandText = "procValidateUserLogin"; // Procedimiento almacenado
+            objSelectCmd.CommandType = CommandType.StoredProcedure;
+
+            // Parámetros del procedimiento almacenado
+            objSelectCmd.Parameters.Add("v_correo", MySqlDbType.VarChar).Value = mail;
+
+            try
             {
-                try
+                using (MySqlDataReader reader = objSelectCmd.ExecuteReader())
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("procValidateUserLogin", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    // Parámetros del procedimiento almacenado
-                    cmd.Parameters.AddWithValue("v_correo", correo);
-                    cmd.Parameters.AddWithValue("v_contrasena", contrasena);
-
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    da.Fill(ds);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al ejecutar el procedimiento de login", ex);
+                    if (reader.Read())
+                    {
+                        // Crear un objeto User con los datos devueltos por el procedimiento almacenado
+                        objUser = new User
+                        {
+                            UsuId = reader.GetInt32("usu_id"),
+                            NombreCompleto = reader.GetString("nombre_completo"),
+                            Correo = reader.GetString("usu_correo"),
+                            Contrasena = reader.GetString("usu_contrasena"),
+                            Salt = reader.GetString("usu_salt"),
+                            Rol = reader.GetString("usu_rol")
+                        };
+                    }
                 }
             }
-            return ds;
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el usuario por correo", ex);
+            }
+            finally
+            {
+                objPer.closeConnection(); // Cerrar la conexión usando Persistencia
+            }
+
+            return objUser;
         }
 
         // Comprueba si hay al menos un administrador registrado en la base de datos.
-
         public bool AdminExists()
         {
             bool exists = false;
@@ -224,6 +232,5 @@ namespace Data
 
             return exists;
         }
-
     }
 }
