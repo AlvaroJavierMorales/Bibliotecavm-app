@@ -1,21 +1,27 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using Data;
+
 
 namespace Logic
 {
     public class PublishersLog
     {
-        PublishersDat objPub = new PublishersDat(); 
+        PublishersDat objPub = new PublishersDat();
 
-        
+
         public DataSet showEditorials()
         {
-            return objPub.showEditorials(); 
+            return objPub.showEditorials();
         }
+        public DataSet showEditorialsDDL()
+        {
+            return objPub.showEditorialsDDL();
+        }
+
 
         // Método para guardar una nueva Editorial
         public bool saveEditorial(string _nombre, string _ciudad, string _telefono, string _correo)
