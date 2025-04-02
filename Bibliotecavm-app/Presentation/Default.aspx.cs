@@ -1,6 +1,5 @@
-﻿
-using Logic; // Asegúrate de importar la capa lógica
-using Model; // Asegúrate de importar la capa de modelos
+﻿using Logic; 
+using Model; 
 using System;
 using System.Web;
 using System.Web.Security;
@@ -40,7 +39,7 @@ namespace Presentation
                 {
                     // Asignar valores a la sesión
                     Session["UserId"] = usuario.UsuId;
-                    Session["Username"] = usuario.Correo;
+                    Session["Username"] = usuario.NombreCompleto;
                     Session["UserRole"] = usuario.Rol;
 
                     // Crear el ticket de autenticación
